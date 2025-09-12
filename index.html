@@ -10,7 +10,8 @@
     a { color:var(--accent); text-decoration:none; }
 
     /* Desktop layout */
-    .layout { display:grid; grid-template-columns:260px 1fr; min-height:100vh; }
+    .layout { display:grid; grid-template-columns:260px 1fr; min-height:100vh; gap: 0;}
+    .sidebar { border-right: 0; box-shadow: none; }
 
     /* Sidebar (desktop defaults) */
     .sidebar { background:#111; color:#fff; padding:2rem 1rem; position:static; width:auto; height:auto; overflow:visible; }
@@ -21,10 +22,10 @@
     .tabs { display:flex; flex-direction:column; gap:.5rem; }
     .tabs button { background:none; border:none; text-align:left; color:#ddd; font-weight:600; padding:.5rem .75rem; border-radius:.35rem; cursor:pointer; }
     .tabs button[aria-selected="true"] { background:rgba(255,255,255,.15); color:#fff; }
-
+    .backdrop { display: none; }
     /* Content */
     .content { padding:2rem 1.5rem; }
-
+    #content:focus, #content:focus-visible { outline:none; }
     /* Top bar (mobile only) */
     /* Put these OUTSIDE any media query */
     .topbar{
@@ -36,15 +37,21 @@
     .brand{ font-weight:700; }
     
     /* Hide header on large screens (sidebar is visible there) */
-    @media (min-width:861px){
-        .topbar{ display:none; }
-    }
+    @media (min-width: 861px){
+        .topbar { display: none; }            /* <-- this was missing */
+      
+        .content { position: relative; background:#fff; border-left: 0; }
+        .content::before{
+          content:"";
+          position:absolute; left:-1px; top:0; bottom:0; width:2px;
+          background:#fff; pointer-events:none;
+        }
+      }
     
 
     /* Mobile styles */
     @media (max-width:860px){
-        .layout{ display:block; padding-top:56px; }  /* content under fixed header */
-      
+        .layout{ display:block; padding-top:56px; }
         .sidebar{
           position:fixed; top:56px; left:0; bottom:0; width:260px; overflow-y:auto;
           background:#111; color:#fff; padding:2rem 1rem;
@@ -52,12 +59,11 @@
         }
         .sidebar.open{ transform:translateX(0); }
       
-        .backdrop{
-          display:none; position:fixed; inset:56px 0 0 0;  /* leave header clickable */
-          background:rgba(0,0,0,.4); z-index:1050;
-        }
+        .backdrop{ display:none; position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.4); z-index:1050; }
         .backdrop.show{ display:block; }
-      }
+    }
+      
+      
       
   </style>
 </head>
@@ -83,7 +89,7 @@
       </nav>
     </aside>
 
-    <section class="content" id="content" tabindex="-1">
+    <section class="content" id="content">
       <article id="view-home" data-view="home">
         <h1>Welcome</h1>
         <p>I’m a Ph.D. Candidate in Economics at the University of Tennessee, Knoxville. I study how natural disasters affect educational outcomes, focusing on earthquake exposure and student achievement in Mexico.</p>
@@ -113,7 +119,6 @@
       views.forEach((el,k)=>el.hidden=k!==view);
       tabs.forEach(t=>t.setAttribute('aria-selected',String(t.dataset.target===view)));
       history.replaceState(null,'','#'+view);
-      content.focus({preventScroll:false});
       closeSidebar();
     }
     tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.target)));
