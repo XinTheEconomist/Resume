@@ -14,7 +14,7 @@
     .sidebar { border-right: 0; box-shadow: none; }
 
     /* Sidebar (desktop defaults) */
-    .sidebar { background:#111; color:#fff; padding:2rem 1rem; position:static; width:auto; height:auto; overflow:visible; }
+    .sidebar { background:#111111; color:#fff; padding:2rem 1rem; position:static; width:auto; height:auto; overflow:visible; }
     .sidebar .close { display:none; }
     .avatar { width:140px; height:140px; border-radius:50%; object-fit:cover; display:block; margin:0 auto 1rem; }
     .name { text-align:center; margin:0; font-size:1.4rem; font-weight:700; }
@@ -26,42 +26,122 @@
     /* Content */
     .content { padding:2rem 1.5rem; }
     #content:focus, #content:focus-visible { outline:none; }
-    /* Top bar (mobile only) */
-    /* Put these OUTSIDE any media query */
-    .topbar{
-        display:flex; position:fixed; top:0; left:0; right:0; height:56px;
-        align-items:center; gap:.75rem; padding:0 1rem;
-        background:#fff; border-bottom:1px solid #eaeef3; z-index:2000; /* on top of everything */
+    [hidden] { display: none !important; }
+
+  
+  /* Teaching section */
+  #view-teaching {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers the title horizontally */
+    text-align: center;    /* centers the text under the title */
+    padding: 2rem 1.5rem;
+  }
+
+  #view-teaching h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;  /* space below the title */
+  }
+
+  /* research section */
+  #view-research {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers the title horizontally */
+    text-align: center;    /* centers the text under the title */
+    padding: 2rem 1.5rem;
+  }
+
+  #view-research h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;  /* space below the title */
+  }
+  #view-research p {
+    max-width: 800px;         /* keep paragraphs readable */
+    line-height: 1.6;
+  }
+
+
+  /*styling for home page */
+  #view-home{
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;  /* text : image */
+    align-items:start;
+    gap:2rem;
+    padding:2rem;
+  }
+
+  #view-home .home-copy{
+    text-align:left;
+    max-width: 800px;
+  }
+
+  #view-home h1{
+    font-size:3rem;
+    margin:0 0 1rem;
+  }
+
+  #view-home p{
+    font-size:1.25rem;
+    line-height:1.7;
+  }
+
+  /* Image styles  for home */
+  .home-media{ margin:0; }
+  .home-photo{
+    width:100%;
+    max-width:520px;
+    aspect-ratio: 4 / 5;     /* nice portrait shape */
+    object-fit:cover;
+    border-radius:12px;
+    box-shadow:0 6px 24px rgba(0,0,0,.12);
+  }
+
+  /* Stack on mobile */
+  @media (max-width:860px){
+    #view-home{
+      grid-template-columns:1fr;
+      text-align:center;
     }
-    .menu-toggle{ background:none; border:none; font-size:1.5rem; line-height:1; }
-    .brand{ font-weight:700; }
+    #view-home .home-copy{ text-align:center; margin:0 auto; }
+    .home-photo{ margin:0 auto; }
+  }
+
+  /* top bar stuff */
+  .topbar{
+      display:flex; position:fixed; top:0; left:0; right:0; height:56px;
+      align-items:center; gap:.75rem; padding:0 1rem;
+      background:#fff; border-bottom:1px solid #eaeef3; z-index:2000; /* on top of everything */
+  }
+  .menu-toggle{ background:none; border:none; font-size:1.5rem; line-height:1; }
+  .brand{ font-weight:700; }
+  
+  /* Hide header on large screens (sidebar is visible there) */
+  @media (min-width: 861px){
+      .topbar { display: none; }            /* <-- this was missing */
     
-    /* Hide header on large screens (sidebar is visible there) */
-    @media (min-width: 861px){
-        .topbar { display: none; }            /* <-- this was missing */
-      
-        .content { position: relative; background:#fff; border-left: 0; }
-        .content::before{
-          content:"";
-          position:absolute; left:-1px; top:0; bottom:0; width:2px;
-          background:#fff; pointer-events:none;
-        }
+      .content { position: relative; background:#fff; border-left: 0; }
+      .content::before{
+        content:"";
+        position:absolute; left:-1px; top:0; bottom:0; width:2px;
+        background:#fff; pointer-events:none;
       }
+    }
     
 
-    /* Mobile styles */
-    @media (max-width:860px){
-        .layout{ display:block; padding-top:56px; }
-        .sidebar{
-          position:fixed; top:56px; left:0; bottom:0; width:260px; overflow-y:auto;
-          background:#111; color:#fff; padding:2rem 1rem;
-          transform:translateX(-100%); transition:transform .25s ease; z-index:1100;
-        }
-        .sidebar.open{ transform:translateX(0); }
-      
-        .backdrop{ display:none; position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.4); z-index:1050; }
-        .backdrop.show{ display:block; }
-    }
+  /* Mobile styles */
+  @media (max-width:860px){
+      .layout{ display:block; padding-top:56px; }
+      .sidebar{
+        position:fixed; top:56px; left:0; bottom:0; width:260px; overflow-y:auto;
+        background:#111; color:#fff; padding:2rem 1rem;
+        transform:translateX(-100%); transition:transform .25s ease; z-index:1100;
+      }
+      .sidebar.open{ transform:translateX(0); }
+    
+      .backdrop{ display:none; position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.4); z-index:1050; }
+      .backdrop.show{ display:block; }
+  }
       
       
       
@@ -84,27 +164,28 @@
       <nav class="tabs" role="tablist">
         <button role="tab" data-target="home" aria-selected="true">Home</button>
         <button role="tab" data-target="teaching">Teaching</button>
-        <button role="tab" data-target="works">Working Papers</button>
-        <button role="tab" data-target="cs">CS on GitHub</button>
+        <button role="tab" data-target="research">Research</button>
       </nav>
     </aside>
 
     <section class="content" id="content">
       <article id="view-home" data-view="home">
-        <h1>Welcome</h1>
-        <p>I’m a Ph.D. Candidate in Economics at the University of Tennessee, Knoxville. I study how natural disasters affect educational outcomes, focusing on earthquake exposure and student achievement in Mexico.</p>
+        <div class="home-copy">
+          <h1>Xin Jin</h1>
+          <p>I’m a Ph.D. Candidate in Economics at the University of Tennessee, Knoxville. I study how natural disasters affect educational outcomes, focusing on earthquake exposure and student achievement in Mexico.</p>
+        </div>
+      
+        <figure class="home-media">
+          <img src="./resume_pic.jpg" alt="Portrait of Xin Jin" class="home-photo" />
+        </figure>
       </article>
       <article id="view-teaching" data-view="teaching" hidden>
         <h1>Teaching</h1>
         <p>Teaching details...</p>
       </article>
-      <article id="view-works" data-view="works" hidden>
-        <h1>Working Papers</h1>
+      <article id="view-research" data-view="research" hidden>
+        <h1>Research</h1>
         <p>Research works...</p>
-      </article>
-      <article id="view-cs" data-view="cs" hidden>
-        <h1>CS Projects</h1>
-        <p><a href="https://github.com/" target="_blank" rel="noopener">GitHub Profile</a></p>
       </article>
     </section>
   </main>
