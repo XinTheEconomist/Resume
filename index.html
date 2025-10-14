@@ -27,135 +27,162 @@
     .content { padding:2rem 1.5rem; }
     #content:focus, #content:focus-visible { outline:none; }
     [hidden] { display: none !important; }
+      .paper {
+    margin-bottom: 2rem;
+    }
 
-  /* Resume section */
-  #view-resume {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* centers the title horizontally */
-    text-align: center;    /* centers the text under the title */
-    padding: 2rem 1.5rem;
-  }
+    .paper-title {
+      font-weight: bold;
+      text-align: left;
+      cursor: pointer;
+      margin-bottom: 0.3rem;
+    }
 
-  #view-resume h1 {
-    font-size: 2.5rem;
-    margin: 0 0 1.5rem 0;  /* space below the title */
-  }
+    .paper-abstract {
+      text-align: left;
+      text-decoration: underline;
+      color: #0066cc;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
 
+    .paper-content {
+      text-align: left;
+      display: none; /* hidden by default */
+      line-height: 1.6;
+    }
 
-  /* Teaching section */
-  #view-teaching {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* centers the title horizontally */
-    text-align: center;    /* centers the text under the title */
-    padding: 2rem 1.5rem;
-  }
+    .paper-content.show {
+      display: block; /* shown when clicked */
+    }
 
-  #view-teaching h1 {
-    font-size: 2.5rem;
-    margin: 0 0 1.5rem 0;  /* space below the title */
-  }
+    /* Resume section */
+    #view-resume {
+      display: flex;
+      flex-direction: column;
+      align-items: center;   /* centers the title horizontally */
+      text-align: center;    /* centers the text under the title */
+      padding: 2rem 1.5rem;
+    }
 
-  /* research section */
-  #view-research {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* centers the title horizontally */
-    text-align: center;    /* centers the text under the title */
-    padding: 2rem 1.5rem;
-  }
-
-  #view-research h1 {
-    font-size: 2.5rem;
-    margin: 0 0 1.5rem 0;  /* space below the title */
-  }
-  #view-research p {
-    max-width: 800px;         /* keep paragraphs readable */
-    line-height: 1.6;
-  }
+    #view-resume h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1.5rem 0;  /* space below the title */
+    }
 
 
-  /*styling for home page */
-  #view-home{
-    display:grid;
-    grid-template-columns: 1.2fr 1fr;  /* text : image */
-    align-items:start;
-    gap:2rem;
-    padding:2rem;
-  }
+    /* Teaching section */
+    #view-teaching {
+      display: flex;
+      flex-direction: column;
+      align-items: center;   /* centers the title horizontally */
+      text-align: center;    /* centers the text under the title */
+      padding: 2rem 1.5rem;
+    }
 
-  #view-home .home-copy{
-    text-align:left;
-    max-width: 800px;
-  }
+    #view-teaching h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1.5rem 0;  /* space below the title */
+    }
 
-  #view-home h1{
-    font-size:3rem;
-    margin:0 0 1rem;
-  }
+    /* research section */
+    #view-research {
+      display: flex;
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+    }
 
-  #view-home p{
-    font-size:1.25rem;
-    line-height:1.7;
-  }
+    #view-research h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1.5rem 0;  /* space below the title */
+    }
+    #view-research p {
+      max-width: 800px;         /* keep paragraphs readable */
+      line-height: 1.6;
+    }
 
-  /* Image styles  for home */
-  .home-media{ margin:0; }
-  .home-photo{
-    width:100%;
-    max-width:520px;
-    aspect-ratio: 4 / 5;     /* nice portrait shape */
-    object-fit:cover;
-    border-radius:12px;
-    box-shadow:0 6px 24px rgba(0,0,0,.12);
-  }
 
-  /* Stack on mobile */
-  @media (max-width:860px){
+    /*styling for home page */
     #view-home{
-      grid-template-columns:1fr;
-      text-align:center;
+      display:grid;
+      grid-template-columns: 1.2fr 1fr;  /* text : image */
+      align-items:start;
+      gap:2rem;
+      padding:2rem;
     }
-    #view-home .home-copy{ text-align:center; margin:0 auto; }
-    .home-photo{ margin:0 auto; }
-  }
 
-  /* top bar stuff */
-  .topbar{
-      display:flex; position:fixed; top:0; left:0; right:0; height:56px;
-      align-items:center; gap:.75rem; padding:0 1rem;
-      background:#fff; border-bottom:1px solid #eaeef3; z-index:2000; /* on top of everything */
-  }
-  .menu-toggle{ background:none; border:none; font-size:1.5rem; line-height:1; }
-  .brand{ font-weight:700; }
-  
-  /* Hide header on large screens (sidebar is visible there) */
-  @media (min-width: 861px){
-      .topbar { display: none; }            /* <-- this was missing */
-    
-      .content { position: relative; background:#fff; border-left: 0; }
-      .content::before{
-        content:"";
-        position:absolute; left:-1px; top:0; bottom:0; width:2px;
-        background:#fff; pointer-events:none;
-      }
+    #view-home .home-copy{
+      text-align:left;
+      max-width: 800px;
     }
-    
 
-  /* Mobile styles */
-  @media (max-width:860px){
-      .layout{ display:block; padding-top:56px; }
-      .sidebar{
-        position:fixed; top:56px; left:0; bottom:0; width:260px; overflow-y:auto;
-        background:#111; color:#fff; padding:2rem 1rem;
-        transform:translateX(-100%); transition:transform .25s ease; z-index:1100;
+    #view-home h1{
+      font-size:3rem;
+      margin:0 0 1rem;
+    }
+
+    #view-home p{
+      font-size:1.25rem;
+      line-height:1.7;
+    }
+
+    /* Image styles  for home */
+    .home-media{ margin:0; }
+    .home-photo{
+      width:100%;
+      max-width:520px;
+      aspect-ratio: 4 / 5;     /* nice portrait shape */
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 6px 24px rgba(0,0,0,.12);
+    }
+
+    /* Stack on mobile */
+    @media (max-width:860px){
+      #view-home{
+        grid-template-columns:1fr;
+        text-align:center;
       }
-      .sidebar.open{ transform:translateX(0); }
+      #view-home .home-copy{ text-align:center; margin:0 auto; }
+      .home-photo{ margin:0 auto; }
+    }
+
+    /* top bar stuff */
+    .topbar{
+        display:flex; position:fixed; top:0; left:0; right:0; height:56px;
+        align-items:center; gap:.75rem; padding:0 1rem;
+        background:#fff; border-bottom:1px solid #eaeef3; z-index:2000; /* on top of everything */
+    }
+    .menu-toggle{ background:none; border:none; font-size:1.5rem; line-height:1; }
+    .brand{ font-weight:700; }
     
-      .backdrop{ display:none; position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.4); z-index:1050; }
-      .backdrop.show{ display:block; }
-  }
+    /* Hide header on large screens (sidebar is visible there) */
+    @media (min-width: 861px){
+        .topbar { display: none; }            /* <-- this was missing */
+      
+        .content { position: relative; background:#fff; border-left: 0; }
+        .content::before{
+          content:"";
+          position:absolute; left:-1px; top:0; bottom:0; width:2px;
+          background:#fff; pointer-events:none;
+        }
+      }
+      
+
+    /* Mobile styles */
+    @media (max-width:860px){
+        .layout{ display:block; padding-top:56px; }
+        .sidebar{
+          position:fixed; top:56px; left:0; bottom:0; width:260px; overflow-y:auto;
+          background:#111; color:#fff; padding:2rem 1rem;
+          transform:translateX(-100%); transition:transform .25s ease; z-index:1100;
+        }
+        .sidebar.open{ transform:translateX(0); }
+      
+        .backdrop{ display:none; position:fixed; inset:56px 0 0 0; background:rgba(0,0,0,.4); z-index:1050; }
+        .backdrop.show{ display:block; }
+    }
       
       
       
@@ -199,58 +226,88 @@
         <p>Teaching details...</p>
       </article>
       <article id="view-research" data-view="research" hidden>
-        <h1>Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico Job market paper</h1>
-        <p>Earthquakes impose a significant adverse impact on local development. 
-          Although the direct damages to infrastructure and human life are evident, 
-          the disruptions to educational outcomes are less apparent. 
-          Using administrative student-level panel data and precise measures of local ground tremors, 
-          I investigate the effect of earthquakes on elementary school students' low-stakes test performance. 
-          I exploit plausibly exogenous variation in the timing of earthquakes within a difference-in-differences 
-          event study framework, while addressing school switching by including student fixed effects and adopting 
-          an intent-to-treat approach. The findings show that  students are more likely to switch to a new school 
-          after earthquake exposure. Affected students’ test scores decline by 2.5 percent of a standard deviation 
-          in the year of first exposure to an earthquake. The effect appears transitory, as scores recover two years 
-          after the exposure. Analysis of earthquake characteristics reveals that test performance falls more sharply 
-          in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
-          exam.</p>
-        <h1>
-          Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico
-        </h1>
-        <p>
-          This study examines how short-term and long-term exposure to air pollution affect students' 
-          performance on high-stakes tests. We focus on a centralized public high school admission exam 
-          in the metropolitan area of Mexico City, using geographic and temporal variation in $PM_{2.5}$ 
-          levels at the school level, combined with individual administrative data on test scores. A $10 \mu g/m^3$  
-          increase in exposure the week of the exam lowers test scores by 1.8$\%$ of a standard deviation when 
-          estimated separately. When estimated jointly with long-term exposure, the effect of short-term exposure 
-          falls to essentially zero and increases in long-term exposure reduce test scores by 5.7$\%$ of a standard 
-          deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
-          air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. <br><br>
-          We examine how short-term and long-term exposure to air pollution affect students’ 
-          performance on high-stakes tests. We focus on a centralized public high school admission exam in Mexico City, 
-          using geographic and temporal variation in $PM_{2.5}$ levels at the school level, combined with individual 
-          administrative data on test scores. A $10 \mu g/m^3$ increase in exposure the week of the exam lowers test scores 
-          by 1.8$\%$ of a standard deviation when estimated separately. When estimated jointly with long-term exposure, the effect 
-          of short-term exposure falls to zero and increases in long-term exposure reduces test scores by 5.7$\%$ of a standard 
-          deviation. 
-        </p>
-        <h1>
-          Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests
-        </h1>
-        <p>
-          This study investigates the causal effect of a free community college program on local criminal activity by 
-          focusing on the staggered, statewide implementation of the Tennessee Promise program. Leveraging the variation 
-          in implementation timing and agency-level arrest data, we employ a difference-in-differences event-study approach 
-          to assess the spillover effects of financial support on arrest rates. The results indicate that Tennessee Promise 
-          reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
-          Furthermore, the effects are particularly pronounced in counties with community colleges.
-        </p>
-        <h1>
-          From Familiar Faces to Academic Gains: \\Network Effect During School Transition
-        </h1>
-        <p>
-          In progress
-        </p>
+          <div class="paper">
+            <div class="paper-title">
+              Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico Job market paper
+            </div>
+            <div class="paper-abstract" onclick="toggleAbstract(this)">
+              Abstract ▼
+            </div>
+            <div class="paper-content">
+            Earthquakes impose a significant adverse impact on local development. 
+            Although the direct damages to infrastructure and human life are evident, 
+            the disruptions to educational outcomes are less apparent. 
+            Using administrative student-level panel data and precise measures of local ground tremors, 
+            I investigate the effect of earthquakes on elementary school students' low-stakes test performance. 
+            I exploit plausibly exogenous variation in the timing of earthquakes within a difference-in-differences 
+            event study framework, while addressing school switching by including student fixed effects and adopting 
+            an intent-to-treat approach. The findings show that  students are more likely to switch to a new school 
+            after earthquake exposure. Affected students’ test scores decline by 2.5 percent of a standard deviation 
+            in the year of first exposure to an earthquake. The effect appears transitory, as scores recover two years 
+            after the exposure. Analysis of earthquake characteristics reveals that test performance falls more sharply 
+            in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
+            exam.
+            </div>
+          </div>
+
+
+          <div class="paper">
+            <div class="paper-title">
+              Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico
+            </div>
+            <div class="paper-abstract" onclick="toggleAbstract(this)">
+              Abstract ▼
+            </div>
+
+            <div class="paper-content">
+              This study examines how short-term and long-term exposure to air pollution affect students' 
+              performance on high-stakes tests. We focus on a centralized public high school admission exam 
+              in the metropolitan area of Mexico City, using geographic and temporal variation in PM<sub>2.5</sub> 
+              levels at the school level, combined with individual administrative data on test scores. A $10 μg/m³ 
+              increase in exposure the week of the exam lowers test scores by 1.8% of a standard deviation when 
+              estimated separately. When estimated jointly with long-term exposure, the effect of short-term exposure 
+              falls to essentially zero and increases in long-term exposure reduce test scores by 5.7% of a standard 
+              deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
+              air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. <br><br>
+              We examine how short-term and long-term exposure to air pollution affect students’ 
+              performance on high-stakes tests. We focus on a centralized public high school admission exam in Mexico City, 
+              using geographic and temporal variation in PM<sub>2.5</sub>  levels at the school level, combined with individual 
+              administrative data on test scores. A $10 μg/m³ increase in exposure the week of the exam lowers test scores 
+              by 1.8% of a standard deviation when estimated separately. When estimated jointly with long-term exposure, the effect 
+              of short-term exposure falls to zero and increases in long-term exposure reduces test scores by 5.7% of a standard 
+              deviation. 
+            </div>
+          </div>
+
+
+          <div class="paper">
+            <div class="paper-title">
+              Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests
+            </div>
+            <div class="paper-abstract" onclick="toggleAbstract(this)">
+              Abstract ▼
+            </div>
+            <div class="paper-content">
+              This study investigates the causal effect of a free community college program on local criminal activity by 
+              focusing on the staggered, statewide implementation of the Tennessee Promise program. Leveraging the variation 
+              in implementation timing and agency-level arrest data, we employ a difference-in-differences event-study approach 
+              to assess the spillover effects of financial support on arrest rates. The results indicate that Tennessee Promise 
+              reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
+              Furthermore, the effects are particularly pronounced in counties with community colleges.
+            </div>
+          </div>
+
+          <div class="paper">
+            <div class="paper-title">
+              From Familiar Faces to Academic Gains: Network Effect During School Transition
+            </div>
+            <div class="paper-abstract" onclick="toggleAbstract(this)">
+              Abstract ▼
+            </div>
+            <div class="paper-content">
+              In progress
+            </div>
+          </div>
       </article>
       <article id="view-resume" data-view="resume" hidden>
         <iframe 
@@ -285,7 +342,11 @@
 
     function openSidebar(){ sidebar.classList.add('open'); backdrop.classList.add('show'); }
     function closeSidebar(){ sidebar.classList.remove('open'); backdrop.classList.remove('show'); }
-    
+    function toggleAbstract(element) {
+      const content = element.nextElementSibling;
+      content.classList.toggle("show");
+      element.textContent = content.classList.contains("show") ? "Hide ▲" : "Abstract ▼";
+    }
 
     openBtn?.addEventListener('click',()=>{ sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
     closeBtn?.addEventListener('click', closeSidebar);
