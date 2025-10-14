@@ -57,20 +57,34 @@
       display: block; /* shown when clicked */
     }
 
-    /* Resume section */
+    .pdf-viewer {
+      display: block;
+      width: 100%;
+      height: 85vh;        /* fills most of the viewport height */
+      min-width: 640px;    /* don't get too narrow on large screens */
+      min-height: 800px;   /* readable minimum height */
+      max-width: 1200px;   /* optional: cap the width for readability */
+      border: none;
+      box-shadow: 0 0 12px rgba(0,0,0,.1);
+      border-radius: 8px;
+    }
+
+    /* Center the viewer nicely in the resume section */
     #view-resume {
       display: flex;
-      flex-direction: column;
-      align-items: center;   /* centers the title horizontally */
-      text-align: center;    /* centers the text under the title */
+      justify-content: center;
       padding: 2rem 1.5rem;
     }
 
-    #view-resume h1 {
-      font-size: 2.5rem;
-      margin: 0 0 1.5rem 0;  /* space below the title */
+    /* On small screens, let it shrink responsibly */
+    @media (max-width: 700px) {
+      .pdf-viewer {
+        min-width: 0;      /* allow smaller than 640px on phones */
+        height: 75vh;
+        min-height: 0;
+        max-width: 100%;
+      }
     }
-
 
     /* Teaching section */
     #view-teaching {
@@ -310,10 +324,7 @@
           </div>
       </article>
       <article id="view-resume" data-view="resume" hidden>
-        <iframe
-          src="Xin_Jin.pdf#zoom=page-width"
-          class="pdf-viewer">
-        </iframe>
+        <iframe src="Xin_Jin.pdf#zoom=page-width" class="pdf-viewer"></iframe>
       </article>
     </section>
   </main>
