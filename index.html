@@ -28,7 +28,21 @@
     #content:focus, #content:focus-visible { outline:none; }
     [hidden] { display: none !important; }
 
-  
+  /* Resume section */
+  #view-resume {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centers the title horizontally */
+    text-align: center;    /* centers the text under the title */
+    padding: 2rem 1.5rem;
+  }
+
+  #view-resume h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;  /* space below the title */
+  }
+
+
   /* Teaching section */
   #view-teaching {
     display: flex;
@@ -165,6 +179,7 @@
         <button role="tab" data-target="home" aria-selected="true">Home</button>
         <button role="tab" data-target="teaching">Teaching</button>
         <button role="tab" data-target="research">Research</button>
+        <button role="tab" data-target="resume">Resume</button>
       </nav>
     </aside>
 
@@ -186,6 +201,14 @@
       <article id="view-research" data-view="research" hidden>
         <h1>Research</h1>
         <p>Research works...</p>
+      </article>
+      <article id="view-resume" data-view="resume" hidden>
+        <iframe 
+          src="Xin_Jin.pdf#view=FitH" 
+          width="60%" 
+          height="900px" 
+          style="border:none; box-shadow:0 0 12px rgba(0,0,0,.1); border-radius:8px;">
+        </iframe>
       </article>
     </section>
   </main>
