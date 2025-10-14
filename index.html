@@ -58,13 +58,10 @@
     }
 
     .pdf-viewer {
-      display: block;
-      width: 100%;
-      height: 85vh;        /* fills most of the viewport height */
-      min-width: 640px;    /* don't get too narrow on large screens */
-      min-height: 800px;   /* readable minimum height */
-      max-width: 1200px;   /* optional: cap the width for readability */
+      width: 90vw;
+      height: 120vh;   /* taller frame so pages don’t compress */
       border: none;
+      min-width: 800px;
       box-shadow: 0 0 12px rgba(0,0,0,.1);
       border-radius: 8px;
     }
@@ -324,7 +321,7 @@
           </div>
       </article>
       <article id="view-resume" data-view="resume" hidden>
-        <iframe src="Xin_Jin.pdf#zoom=page-width" class="pdf-viewer"></iframe>
+        <iframe src="Xin_Jin.pdf#zoom=page-fit" class="pdf-viewer"></iframe>
       </article>
     </section>
   </main>
