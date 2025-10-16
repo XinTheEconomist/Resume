@@ -48,6 +48,12 @@
       display: inline-block;
       margin-bottom: 0.5rem;
     }
+        .paper-coauthor {
+      font-weight: normal;
+      font-style: italic;
+      margin-top: 0.3em;
+      color: #555; /* optional softer gray */
+    }
 
     .paper-content {
       text-align: left;
@@ -237,7 +243,7 @@
         </figure>
       </article>
       <article id="view-teaching" data-view="teaching" hidden>
-        <h1 style="font-size: 2em; font-weight: bold; text-decoration: underline;">Teaching</h1>
+        <h1 style="font-size: 2em; font-weight: bold;">Teaching</h1>
         <h2 style="font-size: 1.5em; font-weight: bold; text-decoration: underline; margin-top: 1em;">
           Primary Instructor
         </h2>
@@ -286,6 +292,8 @@
       </article>
       <article id="view-research" data-view="research" hidden>
           <div class="paper">
+            <h1 style="font-size: 2em; font-weight: bold;">Research</h1>
+            <h1 style="font-size: 1.5em; font-weight: bold;">Working Papers</h1>
             <div class="paper-title">
               Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico <span class="paper-subtitle">[Job market paper]</span>
             </div>
@@ -314,6 +322,9 @@
             <div class="paper-title">
               Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico
             </div>
+            <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
+              join with J. Scott Holladay and María Padilla-Romo
+            </div>
             <div class="paper-abstract" onclick="toggleAbstract(this)">
               Abstract ▼
             </div>
@@ -329,6 +340,7 @@
               deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
               air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. 
             </div>
+            
           </div>
 
 
@@ -350,14 +362,12 @@
           </div>
 
           <div class="paper">
+            <h1 style="font-size: 1.5em; font-weight: bold;">Working in Progress</h1>
             <div class="paper-title">
               From Familiar Faces to Academic Gains: Network Effect During School Transition
             </div>
-            <div class="paper-abstract" onclick="toggleAbstract(this)">
-              Abstract ▼
-            </div>
-            <div class="paper-content">
-              In progress
+            <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
+              join with María Padilla-Romo
             </div>
           </div>
       </article>
