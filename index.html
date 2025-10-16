@@ -37,7 +37,9 @@
       cursor: pointer;
       margin-bottom: 0.3rem;
     }
-
+    .paper-title .paper-subtitle {
+      font-weight: normal;
+    }
     .paper-abstract {
       text-align: left;
       text-decoration: underline;
@@ -208,14 +210,14 @@
   <main class="layout">
     <aside class="sidebar" id="sidebar" role="complementary">
       <button class="close" aria-label="Close menu">×</button>
-      <img src="./resume_pic.jpg" alt="Portrait of Xin Jin" class="avatar">
+      <img src="./resume_pic_prof.jpg" alt="Portrait of Xin Jin" class="avatar">
       <h2 class="name">Xin Jin</h2>
       <p class="role">Ph.D. Candidate · Economics</p>
       <nav class="tabs" role="tablist">
         <button role="tab" data-target="home" aria-selected="true">Home</button>
         <button role="tab" data-target="teaching">Teaching</button>
         <button role="tab" data-target="research">Research</button>
-        <button role="tab" data-target="resume">Resume</button>
+        <button role="tab" data-target="resume">CV</button>
       </nav>
     </aside>
 
@@ -228,10 +230,10 @@
             My current work focuses on how environmental shocks and education policies shape students’ academic and social outcomes. <br><br>
             I’m passionate about using large-scale administrative data to address real-world policy questions and make economic 
             research more accessible and actionable.</p>
+            <p><strong>Email:</strong> <a href="mailto:xjin11@vols.utk.edu">xjin11@vols.utk.edu</a></p>
         </div>
-      
         <figure class="home-media">
-          <img src="./resume_pic.jpg" alt="Portrait of Xin Jin" class="home-photo" />
+          <img src="./resume_pic_prof.jpg" alt="Portrait of Xin Jin" class="home-photo" />
         </figure>
       </article>
       <article id="view-teaching" data-view="teaching" hidden>
@@ -285,7 +287,7 @@
       <article id="view-research" data-view="research" hidden>
           <div class="paper">
             <div class="paper-title">
-              Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico Job market paper
+              Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico <span class="paper-subtitle">[Job market paper]</span>
             </div>
             <div class="paper-abstract" onclick="toggleAbstract(this)">
               Abstract ▼
