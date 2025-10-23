@@ -65,32 +65,6 @@
       display: block; /* shown when clicked */
     }
 
-    .pdf-viewer {
-      width: 90vw;
-      height: 120vh;   /* taller frame so pages don’t compress */
-      border: none;
-      min-width: 800px;
-      box-shadow: 0 0 12px rgba(0,0,0,.1);
-      border-radius: 8px;
-    }
-
-    /* Center the viewer nicely in the resume section */
-    #view-resume {
-      display: flex;
-      justify-content: center;
-      padding: 2rem 1.5rem;
-    }
-
-    /* On small screens, let it shrink responsibly */
-    @media (max-width: 700px) {
-      .pdf-viewer {
-        min-width: 0;      /* allow smaller than 640px on phones */
-        height: 75vh;
-        min-height: 0;
-        max-width: 100%;
-      }
-    }
-
     /* Teaching section */
     #view-teaching {
       display: flex;
@@ -370,9 +344,7 @@
             </div>
           </div>
       </article>
-      <article id="view-resume" data-view="resume" hidden>
-        <iframe src="Xin_Jin.pdf#zoom=page-fit" class="pdf-viewer"></iframe>
-      </article>
+
     </section>
   </main>
 
@@ -388,7 +360,6 @@
       history.replaceState(null,'','#'+view);
       closeSidebar();
     }
-    tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.target)));
 
     // Drawer logic
     const sidebar=document.getElementById('sidebar');
@@ -411,6 +382,20 @@
 
     // Initial view
     window.addEventListener('DOMContentLoaded',()=>{ show(location.hash.replace('#','')||'home'); });
+
+    const RESUME_URL = 'https://drive.google.com/file/d/1A6ALTpKaV-V5NaJhKG9Tl7dkzdSmYSpH/view';
+
+    tabs.forEach(t => {
+      t.addEventListener('click', (e) => {
+        const target = t.dataset.target;
+        if (target === 'resume') {
+          window.open(RESUME_URL, '_blank', 'noopener,noreferrer');
+          // Do NOT call show('resume'); stay on the current page
+          return;
+        }
+        show(target);
+      });
+    });
   </script>
 </body>
 </html>
