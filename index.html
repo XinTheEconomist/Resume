@@ -27,28 +27,19 @@
     .content { padding:2rem 1.5rem; }
     #content:focus, #content:focus-visible { outline:none; }
     [hidden] { display: none !important; }
-      .paper {
+    
+    /* paper section*/
+    .paper {
     margin-bottom: 2rem;
     }
 
     .paper-title {
       font-weight: bold;
       text-align: left;
-      cursor: pointer;
       margin-bottom: 0.3rem;
     }
-    .paper-title .paper-subtitle {
-      font-weight: normal;
-    }
-    .paper-abstract {
-      text-align: left;
-      text-decoration: underline;
-      color: #0066cc;
-      cursor: pointer;
-      display: inline-block;
-      margin-bottom: 0.5rem;
-    }
-        .paper-coauthor {
+
+    .paper-coauthor {
       font-weight: normal;
       font-style: italic;
       margin-top: 0.3em;
@@ -57,12 +48,7 @@
 
     .paper-content {
       text-align: left;
-      display: none; /* hidden by default */
       line-height: 1.6;
-    }
-
-    .paper-content.show {
-      display: block; /* shown when clicked */
     }
 
     /* Teaching section */
@@ -215,6 +201,7 @@
           <img src="./resume_pic_prof.jpg" alt="Portrait of Xin Jin" class="home-photo" />
         </figure>
       </article>
+
       <article id="view-teaching" data-view="teaching" hidden>
         <h1 style="font-size: 2em; font-weight: bold;">Teaching</h1>
         <h2 style="font-size: 1.5em; font-weight: bold; text-decoration: underline; margin-top: 1em;">
@@ -263,17 +250,17 @@
             </ul>
           </ul>
       </article>
+
+      
       <article id="view-research" data-view="research" hidden>
           <div class="paper">
             <h1 style="font-size: 2em; font-weight: bold;">Research</h1>
-            <h1 style="font-size: 1.5em; font-weight: bold;">Working Papers</h1>
+            <h1 style="font-size: 1.5em; font-weight: bold;text-decoration: underline;">Working Papers</h1>
             <div class="paper-title">
               Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico <span class="paper-subtitle">[Job market paper]</span>
             </div>
-            <div class="paper-abstract" onclick="toggleAbstract(this)">
-              Abstract ▼
-            </div>
             <div class="paper-content">
+            <strong>Abstract:</strong>
             Earthquakes impose a significant adverse impact on local development. 
             Although the direct damages to infrastructure and human life are evident, 
             the disruptions to educational outcomes are less apparent. 
@@ -288,6 +275,7 @@
             in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
             exam.
             </div>
+            <div><strong>Presentation</strong> blah blah blah</div>
           </div>
 
 
@@ -296,13 +284,11 @@
               Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico
             </div>
             <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
-              join with J. Scott Holladay and María Padilla-Romo
-            </div>
-            <div class="paper-abstract" onclick="toggleAbstract(this)">
-              Abstract ▼
+              joint with J. Scott Holladay and María Padilla-Romo
             </div>
 
             <div class="paper-content">
+              <strong>Abstract:</strong>
               This study examines how short-term and long-term exposure to air pollution affect students' 
               performance on high-stakes tests. We focus on a centralized public high school admission exam 
               in the metropolitan area of Mexico City, using geographic and temporal variation in PM<sub>2.5</sub> 
@@ -313,7 +299,7 @@
               deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
               air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. 
             </div>
-            
+            <div><strong>Presentation</strong> blah blah blah</div>
           </div>
 
 
@@ -321,10 +307,8 @@
             <div class="paper-title">
               Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests
             </div>
-            <div class="paper-abstract" onclick="toggleAbstract(this)">
-              Abstract ▼
-            </div>
             <div class="paper-content">
+              <strong>Abstract:</strong>
               This study investigates the causal effect of a free community college program on local criminal activity by 
               focusing on the staggered, statewide implementation of the Tennessee Promise program. Leveraging the variation 
               in implementation timing and agency-level arrest data, we employ a difference-in-differences event-study approach 
@@ -332,15 +316,16 @@
               reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
               Furthermore, the effects are particularly pronounced in counties with community colleges.
             </div>
+            <div><strong>Presentation</strong> blah blah blah</div>
           </div>
 
           <div class="paper">
-            <h1 style="font-size: 1.5em; font-weight: bold;">Working in Progress</h1>
+            <h1 style="font-size: 1.5em; font-weight: bold;text-decoration: underline;">Working in Progress</h1>
             <div class="paper-title">
               From Familiar Faces to Academic Gains: Network Effect During School Transition
             </div>
             <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
-              join with María Padilla-Romo
+              joint with María Padilla-Romo
             </div>
           </div>
       </article>
@@ -369,11 +354,6 @@
 
     function openSidebar(){ sidebar.classList.add('open'); backdrop.classList.add('show'); }
     function closeSidebar(){ sidebar.classList.remove('open'); backdrop.classList.remove('show'); }
-    function toggleAbstract(element) {
-      const content = element.nextElementSibling;
-      content.classList.toggle("show");
-      element.textContent = content.classList.contains("show") ? "Hide ▲" : "Abstract ▼";
-    }
 
     openBtn?.addEventListener('click',()=>{ sidebar.classList.contains('open') ? closeSidebar() : openSidebar(); });
     closeBtn?.addEventListener('click', closeSidebar);
