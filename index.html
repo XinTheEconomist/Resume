@@ -34,16 +34,31 @@
     }
 
     .paper-title {
-      font-weight: bold;
       text-align: left;
       margin-bottom: 0.3rem;
+      font-weight: 700;
+      
     }
 
-    .paper-coauthor {
-      font-weight: normal;
-      font-style: italic;
-      margin-top: 0.3em;
-      color: #555; /* optional softer gray */
+    .paper-title .badge {
+      font-weight: 400;       /* normal */
+      color: #555;            /* optional */
+    }
+    .paper-title a { color: inherit; text-decoration: none; font-weight: inherit; margin-bottom: 0.3rem; }
+    .paper-title a:hover, .paper-title a:focus { text-decoration: underline; }
+
+    .paper-coauthor { font-style: italic; color: #555; }
+
+    .paper-coauthor a {
+      color: inherit;                 /* same color as surrounding text */
+      text-decoration: underline;     /* always underlined */
+      text-underline-offset: 2px;     /* nicer spacing */
+      text-decoration-skip-ink: auto; /* cleaner through descenders */
+      font-weight: 400;               /* not bold */
+    }
+    .paper-coauthor a:hover,
+    .paper-coauthor a:focus {
+      text-decoration: underline;
     }
 
     .paper-content {
@@ -61,6 +76,7 @@
     #view-teaching h1 {
       font-size: 2.5rem;
       margin: 0 0 1.5rem 0;  /* space below the title */
+      text-align: center;
     }
 
     /* research section */
@@ -68,6 +84,10 @@
       display: flex;
       flex-direction: column;
       padding: 2rem 1.5rem;
+    }
+
+    #view-research .paper:first-of-type > h1:first-of-type {
+      text-align: center;
     }
 
     #view-research h1 {
@@ -203,12 +223,11 @@
       </article>
 
       <article id="view-teaching" data-view="teaching" hidden>
-        <h1 style="font-size: 2em; font-weight: bold;">Teaching</h1>
+        <h1 style="font-size: 3em; font-weight: bold;">Teaching</h1>
         <h2 style="font-size: 1.5em; font-weight: bold; text-decoration: underline; margin-top: 1em;">
           Primary Instructor
         </h2>
-        <p><strong>Econ 311: Intermediate Microeconomics</strong> — Spring 2024, Summer 2024, Summer 2025</p>
-
+        <p><strong>Econ 311: Intermediate Microeconomics</strong> — Spring 2024, Summer 2024, Summer 2025<br>*Received Charles B. Garrison Award for Excellence in Teaching</p>
         <ul style="margin-top: 0.5em;">
           <li>“Professor Jin, did an amazing job this semester. She is early in her teaching career but off to a great start.”</li>
           <li>"She did an amazing job. The class sessions were always interesting and she helped me really learn the information in the course. 
@@ -254,10 +273,11 @@
       
       <article id="view-research" data-view="research" hidden>
           <div class="paper">
-            <h1 style="font-size: 2em; font-weight: bold;">Research</h1>
+            <h1 style="font-size: 3em; font-weight: bold;">Research</h1>
             <h1 style="font-size: 1.5em; font-weight: bold;text-decoration: underline;">Working Papers</h1>
-            <div class="paper-title">
-              Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico <span class="paper-subtitle">[Job market paper]</span>
+            <div class="paper-title" data-doc="https://drive.google.com/file/d/1CqmVnE-qRXwgMIBokmaXJL3H8D506nMC/view?usp=sharing">
+              <span class="title-text">Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico</span>
+              <span class="badge">[Job market paper]</span>
             </div>
             <div class="paper-content">
             <strong>Abstract:</strong>
@@ -275,16 +295,16 @@
             in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
             exam.
             </div>
-            <div><strong>Presentation</strong> blah blah blah</div>
+            <div><strong>Presentations:</strong> MidSouth Education Policy Workshop (2025) </div>
           </div>
 
 
           <div class="paper">
             <div class="paper-title">
-              Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico
+              <span class="title-text">Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico</span>
             </div>
             <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
-              joint with J. Scott Holladay and María Padilla-Romo
+              joint with <a href="https://web.utk.edu/~jhollad3/" target="_blank" rel="noopener noreferrer">J. Scott Holladay</a> and <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer">María Padilla-Romo</a>
             </div>
 
             <div class="paper-content">
@@ -299,13 +319,16 @@
               deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
               air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. 
             </div>
-            <div><strong>Presentation</strong> blah blah blah</div>
+            <div><strong>Presentations:</strong> ASHEcon Annual Conference (2025), 
+              SEA Annual Meeting (2024), 
+              AEFP Annual Conference (2024),
+              Development Economics in the South Workshop (2024)</div>
           </div>
 
 
           <div class="paper">
             <div class="paper-title">
-              Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests
+              <span class="title-text">Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests</span>
             </div>
             <div class="paper-content">
               <strong>Abstract:</strong>
@@ -316,7 +339,9 @@
               reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
               Furthermore, the effects are particularly pronounced in counties with community colleges.
             </div>
-            <div><strong>Presentation</strong> blah blah blah</div>
+            <div><strong>Presentations:</strong> SEA Annual Meeting (scheduled Nov. 2025),
+            AEFP Annual Conference (2025) </div>
+            <div><strong>Awards:</strong> J. Fred and Wilma Holly Award for Excellence in Presented Research (2025)</div>
           </div>
 
           <div class="paper">
@@ -325,7 +350,8 @@
               From Familiar Faces to Academic Gains: Network Effect During School Transition
             </div>
             <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
-              joint with María Padilla-Romo
+              joint with
+              <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer">María Padilla-Romo</a>
             </div>
           </div>
       </article>
@@ -363,7 +389,7 @@
     // Initial view
     window.addEventListener('DOMContentLoaded',()=>{ show(location.hash.replace('#','')||'home'); });
 
-    const RESUME_URL = 'https://drive.google.com/file/d/1A6ALTpKaV-V5NaJhKG9Tl7dkzdSmYSpH/view';
+    const RESUME_URL = 'https://drive.google.com/file/d/1Zg2tS1PdJ78MxArNf6bP6Aytvj1L0lcW/view?usp=sharing';
 
     tabs.forEach(t => {
       t.addEventListener('click', (e) => {
@@ -374,6 +400,20 @@
           return;
         }
         show(target);
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.paper-title').forEach(el => {
+        const url = (el.dataset.doc || '').trim();
+        const textEl = el.querySelector('.title-text');
+        if (!url || !textEl || textEl.querySelector('a')) return;
+
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = textEl.textContent.trim();
+        textEl.replaceChildren(a);
       });
     });
   </script>
