@@ -27,7 +27,19 @@
     .content { padding:2rem 1.5rem; }
     #content:focus, #content:focus-visible { outline:none; }
     [hidden] { display: none !important; }
-    
+
+    /* link */
+    .link-icon {
+      display:inline-flex;
+      vertical-align:middle;
+      margin-left:.4rem;
+      text-decoration:none;      /* keep */
+      /* color: var(--accent);   optional with emoji (see note) */
+    }
+    .link-icon:hover { opacity:.9; }
+    .link-icon:focus { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+
+
     /* paper section*/
     .paper {
     margin-bottom: 2rem;
@@ -66,6 +78,31 @@
       line-height: 1.6;
     }
 
+
+    /* Paper with side image */
+  .paper.two-col {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) 320px; /* text | image */
+    gap: 1rem 2rem;
+    align-items: start;
+  }
+  .paper-fig { margin: 0; align-self: start;}
+  .paper-fig img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.12);
+  }
+  .paper.two-col .paper-title { margin-top: 0; }
+  .paper-fig figcaption {
+    font-size: .85rem;
+    color: #666;
+    margin-top: .4rem;
+  }
+  @media (max-width: 860px){
+    .paper.two-col { grid-template-columns: 1fr; } /* stack on mobile */
+  }
+
     /* Teaching section */
     #view-teaching {
       display: flex;
@@ -78,6 +115,8 @@
       margin: 0 0 1.5rem 0;  /* space below the title */
       text-align: center;
     }
+    #view-teaching p + ul { margin-top: .25rem;  margin-bottom: .25rem; }
+    #view-teaching p { margin-bottom: .25rem;  }
 
     /* research section */
     #view-research {
@@ -86,9 +125,7 @@
       padding: 2rem 1.5rem;
     }
 
-    #view-research .paper:first-of-type > h1:first-of-type {
-      text-align: center;
-    }
+    #view-research > h1:first-of-type { text-align: center; }
 
     #view-research h1 {
       font-size: 2.5rem;
@@ -201,8 +238,8 @@
       <p class="role">Ph.D. Candidate · Economics</p>
       <nav class="tabs" role="tablist">
         <button role="tab" data-target="home" aria-selected="true">Home</button>
-        <button role="tab" data-target="teaching">Teaching</button>
         <button role="tab" data-target="research">Research</button>
+        <button role="tab" data-target="teaching">Teaching</button>
         <button role="tab" data-target="resume">CV</button>
       </nav>
     </aside>
@@ -224,10 +261,21 @@
 
       <article id="view-teaching" data-view="teaching" hidden>
         <h1 style="font-size: 3em; font-weight: bold;">Teaching</h1>
-        <h2 style="font-size: 1.5em; font-weight: bold; text-decoration: underline; margin-top: 1em;">
+        <h2 style="font-size: 1.5em; font-weight: bold; margin-top: 1em;">
           Primary Instructor
         </h2>
-        <p><strong>Econ 311: Intermediate Microeconomics</strong> — Spring 2024, Summer 2024, Summer 2025<br>*Received Charles B. Garrison Award for Excellence in Teaching</p>
+        <p>
+          <a href="https://drive.google.com/file/d/1kH-xIM98_b-ad16WOIJeOJM7GmWiFQxn/view?usp=sharing"
+            target="_blank" rel="noopener noreferrer"
+            style="color: inherit; text-decoration: underline; text-underline-offset: 2px;">
+            <strong>Econ 311: Intermediate Microeconomics</strong> — Spring 2024, Summer 2024, Summer 2025
+          </a>
+          <a class="link-icon"
+            href="https://drive.google.com/file/d/1kH-xIM98_b-ad16WOIJeOJM7GmWiFQxn/view?usp=sharing"
+            target="_blank" rel="noopener noreferrer"
+            aria-label="Open Econ 311 syllabus (Google Doc)">🔗
+          </a>
+          <br>*Received Charles B. Garrison Award for Excellence in Teaching</p>
         <ul style="margin-top: 0.5em;">
           <li>“Professor Jin, did an amazing job this semester. She is early in her teaching career but off to a great start.”</li>
           <li>"She did an amazing job. The class sessions were always interesting and she helped me really learn the information in the course. 
@@ -242,7 +290,7 @@
             If it was not for her teaching the section of ECON 311 that I was in I am not sure I would have done as well as I am currently.”</li>
           <li>“Really good professor probably one of the better ones I've had.”</li>
         </ul>
-        <h2 style="font-size: 1.5em; font-weight: bold; text-decoration: underline; margin-top: 2em;">
+        <h2 style="font-size: 1.5em; font-weight: bold; margin-top: 2em;">
           Teaching Assistant
         </h2>
         <p><strong>University of Tennessee</strong></p>
@@ -272,86 +320,144 @@
 
       
       <article id="view-research" data-view="research" hidden>
-          <div class="paper">
-            <h1 style="font-size: 3em; font-weight: bold;">Research</h1>
-            <h1 style="font-size: 1.5em; font-weight: bold;text-decoration: underline;">Working Papers</h1>
-            <div class="paper-title" data-doc="newlink">
-              <span class="title-text">Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico</span>
-              <span class="badge">[Job market paper]</span>
-            </div>
-            <div class="paper-content">
-            <strong>Abstract:</strong>
-            Earthquakes impose a significant adverse impact on local development. 
-            Although the direct damages to infrastructure and human life are evident, 
-            the disruptions to educational outcomes are less apparent. 
-            Using administrative student-level panel data and precise measures of local ground tremors, 
-            I investigate the effect of earthquakes on elementary school students' low-stakes test performance. 
-            I exploit plausibly exogenous variation in the timing of earthquakes within a difference-in-differences 
-            event study framework, while addressing school switching by including student fixed effects and adopting 
-            an intent-to-treat approach. The findings show that  students are more likely to switch to a new school 
-            after earthquake exposure. Affected students’ test scores decline by 2.5 percent of a standard deviation 
-            in the year of first exposure to an earthquake. The effect appears transitory, as scores recover two years 
-            after the exposure. Analysis of earthquake characteristics reveals that test performance falls more sharply 
-            in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
-            exam.
-            </div>
-            <div><strong>Presentations:</strong> MidSouth Education Policy Workshop (2025) </div>
-          </div>
+          <h1 style="font-size: 3em; font-weight: bold;">Research</h1>
+          <h1 style="font-size: 1.5em; font-weight: bold;">Working Papers</h1>
+          <div class="paper two-col">
+            <div class="paper-main">
+              <div class="paper-title">
+                <a href="https://example.com/PLACEHOLDER"
+                  target="_blank" rel="noopener noreferrer"
+                  style="text-decoration:none; display:inline-flex; align-items:baseline;">
+                  <span style="text-decoration:underline; text-underline-offset:2px;">
+                    <span class="title-text">Ground Shakes, Academic Performance Falls? Evidence from Earthquakes in Mexico</span>
+                    <span class="badge">[Job market paper]</span>
+                  </span>
+                  <span aria-hidden="true" style="margin-left:.4rem; text-decoration:none;">🔗</span>
+                </a>
+              </div>
 
-
-          <div class="paper">
-            <div class="paper-title">
-              <span class="title-text">Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico</span>
-            </div>
-            <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
-              joint with <a href="https://web.utk.edu/~jhollad3/" target="_blank" rel="noopener noreferrer">J. Scott Holladay</a> and <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer">María Padilla-Romo</a>
-            </div>
-
-            <div class="paper-content">
+              <div class="paper-content">
               <strong>Abstract:</strong>
-              This study examines how short-term and long-term exposure to air pollution affect students' 
-              performance on high-stakes tests. We focus on a centralized public high school admission exam 
-              in the metropolitan area of Mexico City, using geographic and temporal variation in PM<sub>2.5</sub> 
-              levels at the school level, combined with individual administrative data on test scores. A $10 μg/m³ 
-              increase in exposure the week of the exam lowers test scores by 1.8% of a standard deviation when 
-              estimated separately. When estimated jointly with long-term exposure, the effect of short-term exposure 
-              falls to essentially zero and increases in long-term exposure reduce test scores by 5.7% of a standard 
-              deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
-              air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. 
+              Earthquakes impose a significant adverse impact on local development. 
+              Although the direct damages to infrastructure and human life are evident, 
+              the disruptions to educational outcomes are less apparent. 
+              Using administrative student-level panel data and precise measures of local ground tremors, 
+              I investigate the effect of earthquakes on elementary school students' low-stakes test performance. 
+              I exploit plausibly exogenous variation in the timing of earthquakes within a difference-in-differences 
+              event study framework, while addressing school switching by including student fixed effects and adopting 
+              an intent-to-treat approach. The findings show that  students are more likely to switch to a new school 
+              after earthquake exposure. Affected students’ test scores decline by 2.5 percent of a standard deviation 
+              in the year of first exposure to an earthquake. The effect appears transitory, as scores recover two years 
+              after the exposure. Analysis of earthquake characteristics reveals that test performance falls more sharply 
+              in the year of exposure when shaking intensity is higher and when the earthquake occurs shortly before the 
+              exam.
+              </div>
+              <div><strong>Presentations:</strong> MidSouth Education Policy Workshop (2025) </div>
             </div>
-            <div><strong>Presentations:</strong> ASHEcon Annual Conference (2025), 
-              SEA Annual Meeting (2024), 
-              AEFP Annual Conference (2024),
-              Development Economics in the South Workshop (2024)</div>
+            <figure class="paper-fig">
+              <!-- Replace src with your actual graph image -->
+              <a href="./Impacts_of_Earthquake_Exposure on Students_Low-stakes Exam_Performance.png" target="_blank" rel="noopener noreferrer">
+                <img src="./Impacts_of_Earthquake_Exposure on Students_Low-stakes Exam_Performance.png"
+                    alt="Impacts_of_Earthquake_Exposure on Students_Low-stakes Exam_Performance."
+                    loading="lazy">
+              </a>
+              <figcaption>Impacts of Earthquake Exposure on Students' Low-stakes Exam Performance</figcaption>
+            </figure>
           </div>
 
 
-          <div class="paper">
-            <div class="paper-title">
-              <span class="title-text">Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests</span>
+            <div class="paper two-col">
+              <div class="paper-main">
+                <div class="paper-title">
+                  <span class="title-text">Air Pollution and Students' High-stakes Exam Performance: Evidence from Mexico</span>
+                </div>
+                <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
+                  joint with
+                  <a href="https://web.utk.edu/~jhollad3/" target="_blank" rel="noopener noreferrer"
+                    style="text-decoration:none; color:inherit;">
+                    <span style="text-decoration:underline; text-underline-offset:2px;">J. Scott Holladay</span>
+                    <span aria-hidden="true" style="margin-left:.25rem; text-decoration:none;">🔗</span>
+                  </a>
+                  and
+                  <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer"
+                    style="text-decoration:none; color:inherit;">
+                    <span style="text-decoration:underline; text-underline-offset:2px;">María Padilla-Romo</span>
+                    <span aria-hidden="true" style="margin-left:.25rem; text-decoration:none;">🔗</span>
+                  </a>
+                </div>
+
+
+                <div class="paper-content">
+                  <strong>Abstract:</strong>
+                  This study examines how short-term and long-term exposure to air pollution affect students' 
+                  performance on high-stakes tests. We focus on a centralized public high school admission exam 
+                  in the metropolitan area of Mexico City, using geographic and temporal variation in PM<sub>2.5</sub> 
+                  levels at the school level, combined with individual administrative data on test scores. A $10 μg/m³ 
+                  increase in exposure the week of the exam lowers test scores by 1.8% of a standard deviation when 
+                  estimated separately. When estimated jointly with long-term exposure, the effect of short-term exposure 
+                  falls to essentially zero and increases in long-term exposure reduce test scores by 5.7% of a standard 
+                  deviation. The effect is largest for boys and lower-income students. Estimating the short-term impacts of 
+                  air pollution on test scores and cognition may misattribute the impacts of long-term exposure to short-term variation. 
+                </div>
+                <div><strong>Presentations:</strong> ASHEcon Annual Conference (2025), 
+                  SEA Annual Meeting (2024), 
+                  AEFP Annual Conference (2024),
+                  Development Economics in the South Workshop (2024)</div>
+              </div>   
+              <figure class="paper-fig">
+                <!-- Replace src with your actual graph image -->
+                <a href="./Effects_of_Short_and_Long-term_Exposure_to_Air_Pollution_on_Test_Scores.png" target="_blank" rel="noopener noreferrer">
+                  <img src="./Effects_of_Short_and_Long-term_Exposure_to_Air_Pollution_on_Test_Scores.png"
+                      alt="Effects_of_Short_and_Long-term_Exposure_to_Air_Pollution_on_Test_Scores."
+                      loading="lazy">
+                </a>
+                <figcaption>Effects of Short- and Long-term Exposure to Air Pollution on Test Scores</figcaption>
+              </figure>
             </div>
-            <div class="paper-content">
-              <strong>Abstract:</strong>
-              This study investigates the causal effect of a free community college program on local criminal activity by 
-              focusing on the staggered, statewide implementation of the Tennessee Promise program. Leveraging the variation 
-              in implementation timing and agency-level arrest data, we employ a difference-in-differences event-study approach 
-              to assess the spillover effects of financial support on arrest rates. The results indicate that Tennessee Promise 
-              reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
-              Furthermore, the effects are particularly pronounced in counties with community colleges.
+
+
+
+            <div class="paper two-col">
+              <div class="paper-main">
+                <div class="paper-title">
+                  <span class="title-text">Beyond Tuition: Assessing the Impact of Free Community College on Local Arrests</span>
+                </div>
+                <div class="paper-content">
+                  <strong>Abstract:</strong>
+                  This study investigates the causal effect of a free community college program on local criminal activity by 
+                  focusing on the staggered, statewide implementation of the Tennessee Promise program. Leveraging the variation 
+                  in implementation timing and agency-level arrest data, we employ a difference-in-differences event-study approach 
+                  to assess the spillover effects of financial support on arrest rates. The results indicate that Tennessee Promise 
+                  reduces the arrest rate among young individuals in adopting counties compared to those that did not implement the program. 
+                  Furthermore, the effects are particularly pronounced in counties with community colleges.
+                </div>
+                <div><strong>Presentations:</strong> SEA Annual Meeting (scheduled Nov. 2025),
+                AEFP Annual Conference (2025) </div>
+                <div><strong>Awards:</strong> J. Fred and Wilma Holly Award for Excellence in Presented Research (2025)</div>
+              </div>
+              <figure class="paper-fig">
+                <!-- Replace src with your actual graph image -->
+                <a href="./Estimated_effects_of_TN_Promise_on_Local_Arrest_Rate_(Age15-19).png" target="_blank" rel="noopener noreferrer">
+                  <img src="./Estimated_effects_of_TN_Promise_on_Local_Arrest_Rate_(Age15-19).png"
+                      alt="Estimated_effects_of_TN_Promise_on_Local_Arrest_Rate_(Age15-19)"
+                      loading="lazy">
+                </a>
+                <figcaption>Estimated effects of TN Promise on Local Arrest Rate (Age 15-19)</figcaption>
+              </figure>
             </div>
-            <div><strong>Presentations:</strong> SEA Annual Meeting (scheduled Nov. 2025),
-            AEFP Annual Conference (2025) </div>
-            <div><strong>Awards:</strong> J. Fred and Wilma Holly Award for Excellence in Presented Research (2025)</div>
-          </div>
 
           <div class="paper">
-            <h1 style="font-size: 1.5em; font-weight: bold;text-decoration: underline;">Working in Progress</h1>
+            <h1 style="font-size: 1.5em; font-weight: bold;">Working in Progress</h1>
             <div class="paper-title">
               From Familiar Faces to Academic Gains: Network Effect During School Transition
             </div>
             <div class="paper-coauthor" style="font-weight: normal; font-style: italic; margin-top: 0.3em;">
               joint with
-              <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer">María Padilla-Romo</a>
+              <a href="https://sites.google.com/site/mariaspadillaromo" target="_blank" rel="noopener noreferrer"
+                style="text-decoration:none; color:inherit;">
+                <span style="text-decoration:underline; text-underline-offset:2px;">María Padilla-Romo</span>
+                <span aria-hidden="true" style="margin-left:.25rem; text-decoration:none;">🔗</span>
+              </a>
             </div>
           </div>
       </article>
